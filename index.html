@@ -9,14 +9,37 @@
         [v-cloak] {
             display: none;
         }
+        #container-data{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #dataCommune{
+            background-color: rgb(216, 216, 216);
+            padding: 0.5em;
+            margin: 0.5em;
+            width: 45%;
+            text-align: center;
+            border-radius: 0.5em;
+        }
     </style>
 </head>
 
 <body>
     <h1>Data des inscriptions à l'animation sportive du Département de Loire-Atlantique</h1>
     <div id="main" v-cloak>
-        <div  v-for="dataAnimation in dataAnimations">
-            <p>Commune : {{dataAnimation.commune}}</p>
+        <div id="container-data">
+            <div  v-for="dataAnimation in dataAnimations" id="dataCommune">
+                <p><strong>Lieu :</strong> {{dataAnimation.commune}}</p>
+                <p><strong>Niveau :</strong> {{dataAnimation.niveau}}</p>
+                <p><strong>Jour du cours :</strong> {{dataAnimation.jour}}</p>
+                <p><strong>Heure de début du cours :</strong> {{dataAnimation.heure_debut}}</p>
+                <p><strong>Heure de fin du cours :</strong> {{dataAnimation.heure_fin}}</p>
+                <p><strong>Nombre de places :</strong> {{dataAnimation.nombre_places}}</p>
+                <p><strong>Nombre d'inscrits :</strong> {{dataAnimation.nombre_places_inscrites}}</p>
+                <p><strong>Nombre de filles :</strong> {{dataAnimation.fille}}</p>
+                <p><strong>Nombre de garçons :</strong> {{dataAnimation.garcon}}</p>
+            </div>
         </div>
     </div>
    
