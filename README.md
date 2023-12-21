@@ -1,1 +1,2 @@
 # epsi-c1-2023
+## Mon projet consiste à récupérer les inscrits à l'animation sportive du département de Loire-Atlantique via l'API : "https://data.loire-atlantique.fr/api/explore/v2.1/catalog/datasets/224400028_inscrits-a-lanimation-sportive-du-departement-de-loire-atlantique/records?limit=20"
