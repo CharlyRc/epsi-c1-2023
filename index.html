@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Api Animation sportive</title>
     <style>
         [v-cloak] {
-            display:none;
+            display: none;
         }
     </style>
 </head>
-<body>
-    <form id="main" v-cloack>
-        
-    </form>
-    <script src="https://unpkg.com/vue@3"></script>
-        <script>
-            const demo = Vue.createApp({
-            data(){
-                return {
 
-                    }
+<body>
+    <h1>Data des inscriptions à l'animation sportive du Département de Loire-Atlantique</h1>
+    <div id="main" v-cloak>
+        <div  v-for="dataAnimation in dataAnimations">
+            <p>Commune : {{dataAnimation.commune}}</p>
+        </div>
+    </div>
+   
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        const apiURL =
+            "https://data.loire-atlantique.fr/api/explore/v2.1/catalog/datasets/224400028_inscrits-a-lanimation-sportive-du-departement-de-loire-atlantique/records?limit=20";
+        const config = {};
+        const demo = Vue.createApp({
+            data() {
+                return {
+                    dataAnimations:[]
                 }
-            }).mount("#main");
-        </script>
+            },
+            created: function () {
+                this.fetchDataPromise();
+            },
+
+            methods: {
+                fetchDataPromise: function () {
+                    axios
+                        .get(apiURL)
+                        .then((response) => {
+                            console.log(response.data);
+                            this.dataAnimations = response.data.results
+                        })
+                        .catch(function (error) {
+                            console.log("appel api en erreur")
+                            console.log(error);
+                        });
+                }
+            },
+        }).mount("#main");
+    </script>
 </body>
+
 </html>
